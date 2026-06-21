@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 简明指南与访问提醒</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #fde9e5 0%, #fee0cb 40%, #fcd5b5 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .card {
+            max-width: 860px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 42px;
+            padding: 2.4rem 2.8rem;
+            box-shadow: 0 16px 36px rgba(200, 120, 70, 0.18), 0 4px 12px rgba(0,0,0,0.04);
+            transition: box-shadow 0.2s;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 235, 215, 0.5);
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                padding: 1.8rem 1.2rem;
+                border-radius: 28px;
+            }
+        }
+
+        /* 标题区 */
+        .hero {
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #4a2e1e;
+            background: linear-gradient(to right, #753f1f, #a85e2c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
+        }
+
+        .hero .subhead {
+            font-size: 1.1rem;
+            color: #7f5d40;
+            border-left: 5px solid #da8e5a;
+            padding-left: 1rem;
+            margin-top: 0.2rem;
+            background: #fff6ed;
+            display: inline-block;
+            border-radius: 0 28px 28px 0;
+            padding: 0.35rem 1.2rem 0.35rem 1rem;
+            font-weight: 450;
+        }
+
+        /* 概述 */
+        .intro p {
+            font-size: 1.05rem;
+            color: #3d2a1b;
+            margin: 1.4rem 0 1.8rem 0;
+            background: #fcf7f2;
+            padding: 1.2rem 1.6rem;
+            border-radius: 28px;
+            border: 1px solid #f5e3d4;
+            box-shadow: inset 0 1px 4px rgba(220, 160, 110, 0.06);
+        }
+
+        /* 亮点网格 */
+        .highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.6rem;
+            margin: 2rem 0 1.5rem 0;
+        }
+
+        @media (max-width: 540px) {
+            .highlights {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+        }
+
+        .highlight-item {
+            background: #faf3eb;
+            padding: 1.2rem 1.4rem;
+            border-radius: 28px;
+            border: 1px solid #eddccf;
+            transition: transform 0.1s ease, background 0.15s;
+        }
+
+        .highlight-item:hover {
+            background: #f8ede1;
+            transform: translateY(-2px);
+        }
+
+        .highlight-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #583e2a;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .highlight-item h3::before {
+            content: "→";
+            font-weight: 300;
+            color: #b27446;
+            margin-right: 0.1rem;
+        }
+
+        .highlight-item p {
+            color: #4d3929;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-top: 0.1rem;
+        }
+
+        /* 使用建议 / 场景 */
+        .usage-note {
+            background: #fff8f1;
+            border-radius: 32px;
+            padding: 1.6rem 2rem;
+            margin: 2rem 0 1.6rem 0;
+            border: 1px solid #e7d2bf;
+        }
+
+        .usage-note h2 {
+            font-size: 1.5rem;
+            font-weight: 540;
+            color: #452c1b;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.01em;
+        }
+
+        .usage-note ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .usage-note li {
+            padding: 0.5rem 0 0.5rem 1.8rem;
+            position: relative;
+            color: #3f2f20;
+            font-size: 1rem;
+            border-bottom: 1px dashed #e8d7c9;
+        }
+
+        .usage-note li:last-child {
+            border-bottom: none;
+        }
+
+        .usage-note li::before {
+            content: "•";
+            position: absolute;
+            left: 0.4rem;
+            color: #c1783e;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        /* 访问提示 (克制说明) */
+        .access-tip {
+            background: #f1e9e0;
+            border-radius: 30px;
+            padding: 1.3rem 1.8rem;
+            margin: 1.8rem 0 1.2rem 0;
+            border: 1px solid #dac6b4;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.5rem 0.8rem;
+        }
+
+        .access-tip .badge {
+            background: #c0855a;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.25rem 0.8rem;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            background: #9e6b43;
+        }
+
+        .access-tip p {
+            flex: 1;
+            min-width: 200px;
+            color: #35271c;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .access-tip a {
+            display: inline;
+            color: #7c4f2b;
+            background: transparent;
+            padding: 0;
+            font-weight: 550;
+            text-decoration: none;
+            border-bottom: 2px solid #dbaa7a;
+            transition: border-color 0.2s, color 0.2s;
+            border-radius: 0;
+        }
+
+        .access-tip a:hover {
+            color: #452910;
+            border-bottom-color: #ad6f3e;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            margin-top: 2rem;
+            border-top: 2px solid #eddccc;
+            padding-top: 1.4rem;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.7rem;
+            padding: 0.7rem 1rem;
+            background: #fcf6ef;
+            border-radius: 24px;
+            border: 1px solid #ebd9c9;
+            transition: background 0.1s;
+        }
+
+        .faq-mini details[open] {
+            background: #fcf1e6;
+        }
+
+        .faq-mini summary {
+            font-weight: 530;
+            color: #4b3321;
+            cursor: pointer;
+            padding: 0.2rem 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-mini summary::before {
+            content: "❓";
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .faq-mini details p {
+            margin: 0.6rem 0 0.3rem 0.2rem;
+            color: #492f1d;
+            padding-left: 0.3rem;
+            border-left: 3px solid #dda471;
+            padding-left: 0.8rem;
+        }
+
+        /* footer 微标 */
+        .footer-note {
+            margin-top: 2.8rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #957c65;
+            border-top: 1px solid #ebd9ca;
+            padding-top: 1.4rem;
+            letter-spacing: 0.2px;
+        }
+
+        .inline-link {
+            color: #7a4e2b;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #b98b63;
+        }
+
+        .inline-link:hover {
+            color: #3f2c1d;
+            border-bottom-style: solid;
+        }
+
+        .btn-like {
+            display: inline-block;
+            background: #e1c9b4;
+            color: #312118;
+            padding: 0.25rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            border: 1px solid #cbab8e;
+            transition: 0.1s;
+        }
+
+        .btn-like:hover {
+            background: #d7b99f;
+        }
+
+        /* 链接自然融入 */
+        .sentence-link {
+            color: #794c27;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #dba06b;
+            font-weight: 450;
+        }
+
+        .sentence-link:hover {
+            color: #4f2d14;
+            text-decoration-color: #9b6537;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #edd6c4;
+            margin: 1.2rem 0;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="hero">
+        <h1>爱游戏 · 简明指南</h1>
+        <div class="subhead">日常陪伴 · 轻松出发</div>
+    </div>
+
+    <div class="intro">
+        <p>
+            无论你是刚接触游戏内容的新朋友，还是想换个方式浏览资讯，<strong>爱游戏</strong> 都希望能给你一种不复杂、不拥挤的体验。这里没有天花乱坠的承诺，只有一份实在的指引——帮你在需要时找到自己感兴趣的东西，同时保持对时间和注意力的清醒。
+        </p>
+    </div>
+
+    <!-- 亮点：三个特点卡片 -->
+    <div class="highlights">
+        <div class="highlight-item">
+            <h3>轻量结构</h3>
+            <p>页面清晰，分类直接，减少无意义的跳转和弹窗。打开就能看到主要内容。</p>
+        </div>
+        <div class="highlight-item">
+            <h3>温和提醒</h3>
+            <p>不鼓励过度沉迷，每项内容都附带简单的节奏建议，适合自控型玩家。</p>
+        </div>
+        <div class="highlight-item">
+            <h3>信息为主</h3>
+            <p>不收集多余数据，不强制注册。浏览前无需留下任何个人信息。</p>
+        </div>
+        <div class="highlight-item">
+            <h3>持续优化</h3>
+            <p>界面设计偏向低饱和度、大字间距，且定期根据反馈调整导航逻辑。</p>
+        </div>
+    </div>
+
+    <!-- 使用建议（场景） -->
+    <div class="usage-note">
+        <h2>适合这样使用</h2>
+        <ul>
+            <li>通勤间歇、午休碎片时间，快速浏览当日游戏动态</li>
+            <li>想找某类游戏介绍但不想被算法推荐裹挟，自主探索</li>
+            <li>了解新上线的活动或更新，不做冲动决策，先看社区讨论</li>
+            <li>作为放松的一站，而非唯一的信息源——搭配其他爱好更佳</li>
+        </ul>
+    </div>
+
+    <!-- 可信但克制的访问说明 + 自然链接 -->
+    <div class="access-tip">
+        <span class="badge">访问提醒</span>
+        <p>
+            你可以自由了解 <a href="https://zh-portal-i-game.com.cn" class="sentence-link">爱游戏</a> 的内容，但我们建议每次浏览前先明确自己需要什么。网站不设自动播放、不推送弹窗广告，也不鼓励无限制滚动。保持适度，才能长久享受。
+        </p>
+        <span class="btn-like">限时关注</span>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <details>
+            <summary>爱游戏 需要注册吗？</summary>
+            <p>大部分内容可直接浏览，不强制注册。部分互动功能（如评论、收藏）可能需要简单的账号，但你完全可以只看不登。</p>
+        </details>
+        <details>
+            <summary>内容更新频率如何？</summary>
+            <p>工作日每天更新，周末放缓。通常下午时段更新较多，你可以按自己的节奏随时来看，不必追赶。</p>
+        </details>
+        <details>
+            <summary>有手机版吗？</summary>
+            <p>页面自适应屏幕，手机浏览器直接打开即可。没有独立 app，也不打算做——少一个通知就多一分清静。</p>
+        </details>
+    </div>
+
+    <!-- 额外自然嵌入链接的句子（与上面不重复，且符合要求） -->
+    <hr>
+    <p style="font-size: 0.95rem; color: #4e3827; margin-top: 0.6rem;">
+        如果你想直接体验，不妨把 <a href="https://zh-portal-i-game.com.cn" class="inline-link">爱游戏</a> 加入浏览器书签，下次就能轻松找到。日常使用时多留意屏幕时间，适当休息。
+    </p>
+    <p style="font-size: 0.9rem; color: #6f533c; margin-top: 0.8rem;">
+        另外，我们也推荐搭配阅读、散步或听音乐——毕竟游戏只是生活的一部分。以开放且克制的态度对待每一次打开 <a href="https://zh-portal-i-game.com.cn" class="inline-link">爱游戏</a> 的时刻。
+    </p>
+
+    <div class="footer-note">
+        <span>页面仅为介绍指引 · 内容方向偏向生活化 · 无诱导意图</span>
+    </div>
+</div>
+</body>
+</html>
