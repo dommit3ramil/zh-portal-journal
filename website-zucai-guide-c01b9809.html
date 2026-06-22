@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>足彩竞猜 – 快速了解网站用途</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f9fc;
+            color: #1e2f3e;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* hero */
+        .hero {
+            background: linear-gradient(145deg, #d6f0f5 0%, #b2dfe8 70%, #9ad4de 100%);
+            padding: 60px 20px 70px;
+            border-radius: 0 0 48px 48px;
+            box-shadow: 0 8px 24px rgba(0, 108, 118, 0.08);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #065b66;
+            margin-bottom: 16px;
+        }
+        .hero p {
+            max-width: 720px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #1f4d57;
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(2px);
+            padding: 14px 28px;
+            border-radius: 60px;
+            display: inline-block;
+            line-height: 1.5;
+        }
+        .hero p a {
+            color: #0a6b78;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid rgba(10, 107, 120, 0.25);
+            transition: border 0.2s;
+        }
+        .hero p a:hover {
+            border-bottom-color: #0a6b78;
+        }
+
+        /* grid 卡片区域 (优势 / 说明) */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #065b66;
+            margin-bottom: 28px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 48px;
+            height: 4px;
+            background: #3db7c9;
+            border-radius: 4px;
+        }
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin: 48px 0;
+        }
+        .grid-card {
+            background: white;
+            border-radius: 28px;
+            padding: 32px 28px;
+            box-shadow: 0 8px 16px rgba(0, 80, 90, 0.05), 0 2px 6px rgba(0, 60, 70, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid #ddeef1;
+        }
+        .grid-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 30px rgba(0, 108, 118, 0.08);
+            border-color: #b2dbe3;
+        }
+        .grid-card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #0a6b78;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .grid-card h3::before {
+            content: '▹';
+            color: #3db7c9;
+            font-size: 1.4rem;
+            margin-right: 6px;
+        }
+        .grid-card p {
+            color: #2e4a56;
+            font-size: 0.98rem;
+            margin-bottom: 8px;
+        }
+        .grid-card .small-meta {
+            font-size: 0.85rem;
+            color: #578590;
+            margin-top: 12px;
+            border-top: 1px dashed #cfe3e8;
+            padding-top: 14px;
+        }
+
+        /* 说明区（单列宽卡片） */
+        .info-block {
+            background: #e7f3f6;
+            border-radius: 32px;
+            padding: 36px 32px;
+            margin: 48px 0;
+            border-left: 8px solid #3db7c9;
+        }
+        .info-block h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #065b66;
+            margin-bottom: 18px;
+        }
+        .info-block p {
+            color: #1d404a;
+            max-width: 800px;
+        }
+
+        /* FAQ 摘要 */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px 32px;
+            margin: 32px 0 48px;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 20px;
+            padding: 20px 24px;
+            box-shadow: 0 2px 8px rgba(0, 90, 100, 0.03);
+            border: 1px solid #d2e6eb;
+        }
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #0a6b78;
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+        .faq-item p {
+            color: #2d505c;
+            font-size: 0.94rem;
+        }
+
+        /* 底部 */
+        .site-footer {
+            margin-top: 60px;
+            padding: 40px 0 30px;
+            border-top: 1px solid #cde3e8;
+            text-align: center;
+            color: #578590;
+            font-size: 0.9rem;
+        }
+        .site-footer a {
+            color: #0a6b78;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .site-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 移动端响应 */
+        @media (max-width: 768px) {
+            .hero { padding: 48px 16px 56px; }
+            .hero h1 { font-size: 1.9rem; }
+            .hero p { font-size: 1rem; padding: 12px 20px; }
+            .grid-2col { grid-template-columns: 1fr; gap: 20px; }
+            .faq-grid { grid-template-columns: 1fr; gap: 14px; }
+            .info-block { padding: 28px 20px; }
+            .grid-card { padding: 26px 20px; }
+            .section-title { font-size: 1.4rem; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.6rem; }
+            .hero p { font-size: 0.95rem; }
+            .container { padding: 0 14px; }
+            .grid-card h3 { font-size: 1.15rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- hero 区 -->
+        <section class="hero">
+            <h1>一眼看懂网站用途</h1>
+            <p>如果你正在找关于 <a href="https://website-zucai.com">足彩竞猜</a> 的信息，这里用最直接的方式帮你梳理。</p>
+        </section>
+
+        <!-- 优势区（网格卡片） -->
+        <section>
+            <h2 class="section-title">为什么来这里</h2>
+            <div class="grid-2col">
+                <div class="grid-card">
+                    <h3>内容聚焦</h3>
+                    <p>整个站点围绕 <strong>足彩竞猜</strong> 这一个主题展开，没有无关干扰。从赛事数据到分析思路，保持信息密度。</p>
+                    <div class="small-meta">适合想快速定位的浏览者</div>
+                </div>
+                <div class="grid-card">
+                    <h3>结构清晰</h3>
+                    <p>页面层次经过梳理，把常见的概念、规则和场景分别呈现，减少反复跳转。你可以通过导航或版块直接找到对应内容。</p>
+                    <div class="small-meta">节省查找时间</div>
+                </div>
+                <div class="grid-card">
+                    <h3>持续更新</h3>
+                    <p>网站内容跟随赛季和规则调整保持迭代，不会用陈旧信息填充。你看到的是近期整理后的版本。</p>
+                    <div class="small-meta">动态维护</div>
+                </div>
+                <div class="grid-card">
+                    <h3>无冗余包装</h3>
+                    <p>没有大篇幅的营销话术，也没有夸张承诺。每一段文字都有实际指向，方便你判断是否匹配自己的需求。</p>
+                    <div class="small-meta">平实直述</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 说明区：从用户识别用途的角度切入 -->
+        <div class="info-block">
+            <h2>快速识别：这是你需要的内容吗？</h2>
+            <p>不少用户刚接触 <a href="https://website-zucai.com">足彩竞猜</a> 时，会先确认网站是偏向资讯、数据还是社区。这个站点以信息整合和基础规则说明为主，不涉及任何代买、合买或保证收益的环节。你可以把它当作一个了解基本概念、常见玩法和相关术语的起点。如果你希望快速知道某个联赛的竞猜结构、赔率类型代表什么，或者一些基础的分析逻辑，这里大概率能找到对应说明。同时网站也尽量避免使用模棱两可的表述，所有内容都基于公开、客观的信息整理。</p>
+            <p style="margin-top: 18px;">当然，任何与竞猜相关的行为都需要你独立判断和决策。网站只提供信息参考，不构成任何形式的建议或诱导。</p>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <section>
+            <h2 class="section-title">常见疑问摘要</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <strong>这网站教人怎么下注吗？</strong>
+                    <p>不。网站围绕 <a href="https://website-zucai.com">足彩竞猜</a> 的规则、术语、常见玩法做解释，不包含具体下注指导、策略保证或预测服务。</p>
+                </div>
+                <div class="faq-item">
+                    <strong>信息更新及时吗？</strong>
+                    <p>团队会跟踪主流联赛的规则变动，并在赛季前后做内容核对。不过竞猜规则可能因区域或平台不同，建议以官方渠道为准。</p>
+                </div>
+                <div class="faq-item">
+                    <strong>需要付费或注册吗？</strong>
+                    <p>浏览网站内容完全免费，目前不需要注册。部分版块可能在未来加入收藏或笔记功能，但基础阅读不受影响。</p>
+                </div>
+                <div class="faq-item">
+                    <strong>适合完全新手吗？</strong>
+                    <p>是的，很多术语和流程都配有简单解释。如果你刚接触 <a href="https://website-zucai.com">足彩竞猜</a>，可以从基础页面看起。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 底部链接（自然嵌入句子） -->
+        <footer class="site-footer">
+            <p>本站致力于提供关于 <a href="https://website-zucai.com">足彩竞猜</a> 的清晰信息，所有内容仅供学习与参考。请理性看待竞猜活动，量力而行。</p>
+            <p style="margin-top: 12px; font-size: 0.85rem; opacity: 0.7;">&copy; 以信息为起点，不构成任何引导。</p>
+        </footer>
+    </div>
+</body>
+</html>
